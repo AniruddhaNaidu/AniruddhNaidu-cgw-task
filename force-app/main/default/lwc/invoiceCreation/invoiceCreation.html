@@ -2,7 +2,7 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 10-19-2024
+  @last modified on  : 10-25-2024
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
@@ -35,18 +35,12 @@
                     <td>Child Relationship Name</td>
                     <td>{child_relationship_name}</td>
                 </tr>
-                <tr>
-                    <td>Line Item Description</td>
-                    <td>{line_item_description}</td>
-                </tr>
-                <tr>
-                    <td>Line Item Quantity</td>
-                    <td>{line_item_quantity}</td>
-                </tr>
-                <tr>
-                    <td>Line Item Unit Price</td>
-                    <td>{line_item_unit_price}</td>
-                </tr>
+                <template for:each={lineItemEntries} for:item="entry">
+                    <tr key={entry.key}>
+                        <td>{entry.key}</td>
+                        <td>{entry.value}</td>
+                    </tr>
+                </template>
             </tbody>
         </table>
     </lightning-card>

@@ -9,15 +9,29 @@ export default class InvoiceCreation extends LightningElement {
     invoice_date;
     invoice_due_date;
     child_relationship_name;
-    line_item_description;
-    line_item_quantity;
-    line_item_unit_price; 
+    lineitems={};
+    lineItemEntries = [];
 
     @wire(CurrentPageReference)
     getStateParameters(currentPageReference){
         if(currentPageReference){
-            console.log('curr: '+currentPageReference);
+            console.log('currentPage: '+currentPageReference);
             this.urlStateParameters = currentPageReference.state;
+            const encodedData = currentPageReference.state.c__lineItems;
+            console.log('encodedData'+encodedData);
+            if (encodedData) {
+                try {
+                    this.lineItems = JSON.parse(decodeURIComponent(encodedData));
+                    console.log('this.lineItems'+this.lineItems);
+                    this.lineItemEntries = Object.entries(this.lineItems).map(([key,value]) => ({
+                        key, value
+                    }));
+                    console.log('Decoded line items:', this.lineItems);
+                    console.log('Decoded line items:', this.lineItems);
+                } catch (error) {
+                    console.error('Error decoding line items:', error);
+                }
+            }
             this.setParametersBasedOnUrl();
         }
     }
@@ -27,9 +41,6 @@ export default class InvoiceCreation extends LightningElement {
         this.invoice_date = this.urlStateParameters.c__invoice_date;
         this.invoice_due_date = this.urlStateParameters.c__invoice_due_date;
         this.child_relationship_name = this.urlStateParameters.c__child_relationship_name;
-        this.line_item_description = this.urlStateParameters.c__line_item_description;
-        this.line_item_quantity = this.urlStateParameters.c__line_item_quantity;
-        this.line_item_unit_price = this.urlStateParameters.c__line_item_unit_price;
         console.log(this.params);
     }
 }
