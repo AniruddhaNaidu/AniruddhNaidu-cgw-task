@@ -64,6 +64,7 @@ public with sharing class OpportunityHelper {
         List<Line_Item__c> lineItemsToCreate = new List<Line_Item__c>();
         Line_Item__c lineItemToInsert = new Line_Item__c();
         for(OpportunityLineItem opp: oppLineItems){
+            lineItemToInsert.Invoice__c = newInvoice.Id;
             lineItemToInsert.Description__c = opp.Description;
             lineItemToInsert.Unit_Price__c = opp.UnitPrice;
             lineItemToInsert.Quantity__c = opp.Quantity;
