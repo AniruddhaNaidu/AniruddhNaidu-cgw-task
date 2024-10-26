@@ -33,7 +33,7 @@ export default class NavigateToUrlParamTable extends NavigationMixin(LightningEl
             this.fetchOpportunityDetails();
             this.isOpportunity = true;
         }
-        this.getInvoice();
+        //this.getInvoice();
     }
 
 
