@@ -2,7 +2,7 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 10-25-2024
+  @last modified on  : 10-27-2024
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <template>
@@ -16,32 +16,41 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Origin Record</td>
+                    <td>origin_record</td>
                     <td>{origin_record}</td>
                 </tr>
                 <tr>
-                    <td>Account</td>
+                    <td>account</td>
                     <td>{account}</td>
                 </tr>
                 <tr>
-                    <td>Invoice Date</td>
+                    <td>invoice_date</td>
                     <td>{invoice_date}</td>
                 </tr>
                 <tr>
-                    <td>Invoice Due Date</td>
+                    <td>invoice_due_date</td>
                     <td>{invoice_due_date}</td>
                 </tr>
                 <tr>
-                    <td>Child Relationship Name</td>
+                    <td>child_relationship_name</td>
                     <td>{child_relationship_name}</td>
                 </tr>
-                <template for:each={lineItemEntries} for:item="entry">
-                    <tr key={entry.key}>
-                        <td>{entry.key}</td>
-                        <td>{entry.value}</td>
-                    </tr>
-                </template>
+                <tr>
+                    <td>line_item_description </td>
+                    <td>{line_item_description}</td>
+                </tr>
+                <tr>
+                    <td>line_item_quantity</td>
+                    <td>{line_item_quantity}</td>
+                </tr>
+                <tr>
+                    <td>line_item_unit_price</td>
+                    <td>{line_item_unit_price}</td>
+                </tr>
             </tbody>
         </table>
+        <footer class="slds-modal__footer">
+            <lightning-button variant="neutral" label="Show JSON" onclick={handleShowJson}></lightning-button>
+        </footer>
     </lightning-card>
 </template>

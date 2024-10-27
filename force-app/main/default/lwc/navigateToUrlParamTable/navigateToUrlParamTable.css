@@ -1,8 +1,0 @@
-.slds-modal__container {
-    width: 50%;
-    max-width: 50rem;
-}
-
-.slds-backdrop_open {
-    z-index: 999;
-}
